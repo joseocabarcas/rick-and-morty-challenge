@@ -1,17 +1,20 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Rick and Morty
+
+Challenge 
+
+- [Nextjs 14 with App Router](https://nextjs.org/docs/app/building-your-application/routing)
+- [TailwindCSS](https://tailwindcss.com/)
+- [React Query](https://react-query.tanstack.com/)
+
 
 ## Getting Started
 
 First, run the development server:
 
 ```bash
-npm run dev
-# or
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -20,17 +23,30 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Rick And Morty
 
-To learn more about Next.js, take a look at the following resources:
+- API Docs: [`R & M`](https://rickandmortyapi.com/)
+- Excalidraw share [`Live`](https://excalidraw.com/#room=ce074148f82794b6fb20,oLA3q3OLxDJYZs66C-Y3OA)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Mockup
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+![Mockup Characters](docs/images/mockup_characters.png)
+![Mockup Character](docs/images/mockup_character.png)
 
-## Deploy on Vercel
+## Component Architecture
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Server vs Client composition
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![Components](docs/images/init_render.png)
+
+### Characters
+
+- Character List
+
+![Character List](docs/images/component_characters.png)
+
+### Character
+
+- Character Details
+
+![Character Detail](docs/images/component_character.png)
