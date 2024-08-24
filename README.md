@@ -9,12 +9,32 @@ Challenge
 
 ## Getting Started
 
-First, run the development server:
+First, install dependencies with pnpm or yarn:
 
 ```bash
-yarn dev
+pnpm install
 # or
+yarn install
+```
+
+Second, create .env.local file:
+
+```bash
+touch .env.local
+```
+
+And add the following content to it:
+
+```bash
+NEXT_PUBLIC_API_BASE_URL="https://rickandmortyapi.com/api"
+```
+
+Third one, run the development server:
+
+```bash
 pnpm dev
+# or
+yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
