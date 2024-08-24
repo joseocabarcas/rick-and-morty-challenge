@@ -1,4 +1,4 @@
-import { Header } from "@rick-and-morty-ch/components/header/header";
+import { Header } from '@rick-and-morty-ch/components/header/header';
 
 export default function CharactersLayout({
   children,
@@ -6,7 +6,7 @@ export default function CharactersLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className="flex flex-col h-dvh w-full">
+    <main className="flex h-dvh w-full flex-col gap-4">
       <Header />
       {children}
     </main>
