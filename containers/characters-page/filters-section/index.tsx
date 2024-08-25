@@ -3,7 +3,7 @@ import { Status } from './status';
 
 export const FiltersSection = () => {
   return (
-    <section className="flex items-center justify-center gap-4">
+    <section className="flex flex-col items-center justify-center gap-2 md:flex-row md:gap-4">
       <SearchBar />
       <Status />
     </section>

@@ -14,7 +14,7 @@ export default async function CharactersPage({}: CharactersPageProps) {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <div className="flex w-full flex-col px-4">
+      <div className="flex w-full flex-col gap-4 px-4">
         <FiltersSection />
         <RecentsSection />
         <ListSection />
