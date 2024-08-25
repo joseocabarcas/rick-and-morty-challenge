@@ -44,10 +44,7 @@ export const getAllCharacters = cache(
 export const optionsGetAllCharacters = (params: TGetAllCharacterParams) =>
   infiniteQueryOptions<ApiResponseCharacters>({
     queryKey: ['getAllCharacters', { ...params, page: 1 }],
-      queryFn: ({ pageParam = 1 }: QueryFunctionContext) =>
-        {
-          console.log('getAllCharacters', { ...params, page: pageParam as number });
-          return getAllCharacters({ ...params, page: pageParam as number })},
+      queryFn: ({ pageParam = 1 }: QueryFunctionContext) => getAllCharacters({ ...params, page: pageParam as number }),
       getNextPageParam: (lastPage) => {
         const nextPage = lastPage?.info.next?.split('page=')[1];
         return nextPage ? parseInt(nextPage, 10) : undefined;
