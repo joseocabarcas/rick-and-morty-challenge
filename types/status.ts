@@ -1,8 +1,12 @@
-export type Status = 'alive' | 'dead' | 'unknown';
+export type Status = 'alive' | 'dead' | 'unknown' | '';
 
 export type TStatusList = { label: string; value: Status };
 
 export const StatusList: TStatusList[] = [
+  {
+    label: 'All',
+    value: '',
+  },
   {
     label: 'Alive',
     value: 'alive',

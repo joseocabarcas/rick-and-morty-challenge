@@ -9,11 +9,9 @@ Challenge
 
 ## Getting Started
 
-First, install dependencies with pnpm or yarn:
+First, install dependencies with yarn:
 
 ```bash
-pnpm install
-# or
 yarn install
 ```
 
@@ -32,8 +30,6 @@ NEXT_PUBLIC_API_BASE_URL="https://rickandmortyapi.com/api"
 Third one, run the development server:
 
 ```bash
-pnpm dev
-# or
 yarn dev
 ```
 

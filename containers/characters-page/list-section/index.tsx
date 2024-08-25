@@ -5,15 +5,17 @@ import { useHandleInfinite } from '../hooks/useHandleInfinite';
 import { useQueryGetAllCharactersInfinite } from '../hooks/useQueryGetAllCharactersInfinite';
 import { Item } from './item';
 import { CharacterSlim } from '@rick-and-morty-ch/types/characters';
+import { useStatusFilter, useTermSearch } from '@rick-and-morty-ch/stores/characters-store';
 
 export const ListSection = () => {
+  const statusFilter = useStatusFilter();
+  const term = useTermSearch();
+
   const { container, visible } = useHandleInfinite();
 
-  // Usar el hook para obtener los personajes
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status, isLoading } =
-    useQueryGetAllCharactersInfinite({});
+    useQueryGetAllCharactersInfinite({ status: statusFilter, name: term });
 
-  // Manejo de efectos para cargar más datos cuando esté en vista
   useEffect(() => {
     if (visible && hasNextPage) {
       fetchNextPage();
@@ -32,7 +34,7 @@ export const ListSection = () => {
           .map((character: CharacterSlim) => <Item key={character.id} character={character} />)}
       </section>
       {isFetchingNextPage && <p>Loading more...</p>}
-      {hasNextPage && <div ref={container} className="my-8 h-1" />}
+      {hasNextPage && <div ref={container} className="my-8 h-2" />}
     </div>
   );
 };

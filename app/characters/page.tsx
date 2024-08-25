@@ -10,7 +10,9 @@ interface CharactersPageProps {}
 export default async function CharactersPage({}: CharactersPageProps) {
   // Prefetch first page
   const queryClient = getQueryClient();
-  await queryClient.prefetchInfiniteQuery(optionsGetAllCharacters({ page: 1 }));
+  await queryClient.prefetchInfiniteQuery(
+    optionsGetAllCharacters({ page: 1, name: '', status: '' }),
+  );
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>

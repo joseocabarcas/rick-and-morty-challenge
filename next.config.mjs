@@ -9,8 +9,9 @@ const nextConfig = {
     ],
   },
   eslint: {
-    dirs: ['pages', 'app', 'components', 'lib', 'types', 'utils', 'hooks', 'containers'],
+    dirs: ['pages', 'app', 'components', 'lib', 'types', 'utils', 'hooks', 'containers', 'stores'],
   },
+  transpilePackages: ["@tanstack/query-core"],
 };
 
 export default nextConfig;
