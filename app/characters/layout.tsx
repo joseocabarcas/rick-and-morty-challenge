@@ -6,7 +6,7 @@ export default function CharactersLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className="flex h-dvh w-full flex-col gap-4">
+    <main className="flex h-dvh w-full flex-col gap-4 px-4 sm:px-6 lg:px-8">
       <Header />
       {children}
     </main>
