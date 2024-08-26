@@ -1,26 +1,26 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useHandleInfinite } from '@rick-and-morty-ch/containers/characters-page/hooks/useHandleInfinite';
 import { useQueryGetAllCharactersInfinite } from '@rick-and-morty-ch/containers/characters-page/hooks/useQueryGetAllCharactersInfinite';
 import { Item } from './item';
 import { CharacterSlim } from '@rick-and-morty-ch/types/characters';
 import { useStatusFilter, useTermSearch } from '@rick-and-morty-ch/stores/characters-store';
+import { useIsVisible } from '@rick-and-morty-ch/hooks/useIsVisible';
 
 export const ListSection = () => {
   const statusFilter = useStatusFilter();
   const term = useTermSearch();
 
-  const { container, visible } = useHandleInfinite();
+  const { ref, isIntersecting } = useIsVisible();
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status, isLoading } =
     useQueryGetAllCharactersInfinite({ status: statusFilter, name: term });
 
   useEffect(() => {
-    if (visible && hasNextPage) {
+    if (isIntersecting && hasNextPage) {
       fetchNextPage();
     }
-  }, [visible, hasNextPage, fetchNextPage]);
+  }, [isIntersecting, hasNextPage, fetchNextPage]);
 
   if (isLoading) return <p>Loading...</p>;
   if (status === 'error') return <p>Error loading characters</p>;
@@ -37,7 +37,7 @@ export const ListSection = () => {
           .map((character: CharacterSlim) => <Item key={character.id} character={character} />)}
       </section>
       {isFetchingNextPage && <p>Loading more...</p>}
-      {hasNextPage && <div ref={container} className="my-8 h-2" />}
+      {hasNextPage ? <div ref={ref} className="my-8 h-2" /> : null}
     </div>
   );
 };

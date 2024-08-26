@@ -1,22 +1,30 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react';
 
-export function useIsVisible(ref: React.RefObject<HTMLDivElement>) {
-  const [isIntersecting, setIntersecting] = useState(false)
+export function useIsVisible() {
+  const [isIntersecting, setIntersecting] = useState(false);
+  const [node, setNode] = useState<HTMLDivElement | null>(null);
+
+  const ref = useCallback((element: HTMLDivElement | null) => {
+    // Actualiza el nodo solo si el elemento existe
+    if (element) {
+      setNode(element);
+    }
+  }, []);
 
   useEffect(() => {
-    if (ref.current) {
+    if (node) {
       const observer = new IntersectionObserver(
         ([entry]) => setIntersecting(entry.isIntersecting),
-        { threshold: 1.0, rootMargin: '120px' }
-      )
+        { threshold: 0.5, rootMargin: '0px' },
+      );
 
-      observer.observe(ref.current)
+      observer.observe(node);
 
       return () => {
-        observer.disconnect()
-      }
+        observer.disconnect();
+      };
     }
-  }, [ref])
+  }, [node]);
 
-  return isIntersecting
+  return { isIntersecting, ref };
 }
