@@ -35,9 +35,6 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
 ## Rick And Morty
 
@@ -66,3 +63,69 @@ Server vs Client composition
 - Character Details
 
 ![Character Detail](docs/images/component_character.png)
+
+## Running Tests
+
+### Unit Tests
+To run unit tests:
+```bash
+yarn test
+```
+
+To run tests with coverage:
+```bash
+yarn test:cv
+```
+
+To run tests in watch mode:
+```bash
+yarn test:watch
+```
+
+### End-to-End (E2E) Tests
+To run e2e tests using Playwright:
+```bash
+yarn test:e2e
+```
+
+For a UI mode to inspect test results:
+```bash
+yarn test:e2e:ui
+```
+
+## Important Libraries
+
+### Core Libraries
+- **Next.js**: The React framework used for building the application.
+- **React**: Core library for building the UI.
+- **Zustand**: A lightweight state management library.
+
+### Testing Libraries
+- **Jest**: JavaScript testing framework for unit tests.
+- **Testing Library (React/DOM)**: Testing utilities for React components.
+
+### E2E Testing
+- **Playwright**: A powerful framework for end-to-end testing.
+
+### Code Quality
+- **ESLint**: Linter for maintaining code quality.
+- **Prettier**: Code formatter for consistent styling.
+- **Prettier Plugin for TailwindCSS**: Ensures Tailwind classes are ordered.
+
+### Styling
+- **TailwindCSS**: Utility-first CSS framework.
+- **Sass**: Preprocessor for writing more maintainable CSS.
+
+## Additional Scripts
+
+### Formatting Code
+Run Prettier to format your code:
+```bash
+yarn format
+```
+
+### Linting Code
+Run ESLint to check for issues:
+```bash
+yarn lint
+```
