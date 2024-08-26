@@ -1,6 +1,5 @@
 import CharacterPage from '@rick-and-morty-ch/app/characters/[id]/page';
 import { getCharacterById } from '@rick-and-morty-ch/services/characters/getCharacterById';
-import '@testing-library/jest-dom';
 import { render, screen, waitFor } from '@testing-library/react';
 import { notFound } from 'next/navigation';
 

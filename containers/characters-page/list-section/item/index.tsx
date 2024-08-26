@@ -8,7 +8,11 @@ interface ItemProps {
 
 export const Item = ({ character }: ItemProps) => {
   return (
-    <Link href={`/characters/${character.id}`} prefetch={false}>
+    <Link
+      href={`/characters/${character.id}`}
+      prefetch={false}
+      data-testid={`character-${character.id}`}
+    >
       <div className="w-full overflow-hidden rounded-lg bg-white shadow-lg">
         <div className="aspect-w-16 aspect-h-9 relative">
           <Image

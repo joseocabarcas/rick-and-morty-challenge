@@ -1,8 +1,6 @@
-import { useIsVisible } from '@rick-and-morty-ch/hooks/useIsVisible';
-import { getAllCharacters, optionsGetAllCharacters } from '@rick-and-morty-ch/services/characters/getAllCharacters';
+import { optionsGetAllCharacters } from '@rick-and-morty-ch/services/characters/getAllCharacters';
 import { ApiResponseCharacters } from '@rick-and-morty-ch/types/characters';
-import { QueryFunctionContext, useInfiniteQuery } from '@tanstack/react-query';
-import { useRef } from 'react';
+import { useInfiniteQuery } from '@tanstack/react-query';
 
 interface Filters {
   name?: string;
@@ -16,4 +14,4 @@ export function useQueryGetAllCharactersInfinite(filters: Filters) {
     });
 
   return { data, fetchNextPage, hasNextPage, isFetchingNextPage, status, isLoading };
-};
+}
