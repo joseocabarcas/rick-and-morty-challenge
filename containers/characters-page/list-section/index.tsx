@@ -28,7 +28,10 @@ export const ListSection = () => {
   return (
     <div className="w-full">
       <h3 className="mb-3 text-2xl font-bold">Characters</h3>
-      <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <section
+        className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+        data-testid="characters"
+      >
         {data?.pages
           .flatMap((page) => page.results)
           .map((character: CharacterSlim) => <Item key={character.id} character={character} />)}
