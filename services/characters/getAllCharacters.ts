@@ -26,7 +26,6 @@ export const getAllCharacters = cache(
 
       return response.json();
     } catch (error) {
-      console.error(error);
       return {
         info: {
           count: 0,

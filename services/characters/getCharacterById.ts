@@ -1,44 +1,33 @@
-import { Character } from '@rick-and-morty-ch/types/character';
+import { Character, Location } from '@rick-and-morty-ch/types/character';
 import { cache } from 'react';
 import { fullUrl } from '../http/fullUrl';
+import { fetcher } from '../http/fetcher';
 
 type TGetCharacterParams = {
   id: string;
 };
 
+const enrichLocationData = async (locationInfo: Location): Promise<Location> => {
+  if (locationInfo.url) {
+    const locationData = await fetcher<Location>(locationInfo.url);
+    return locationData ? { ...locationInfo, ...locationData } : locationInfo;
+  }
+  return locationInfo;
+};
+
 export const getCharacterById = cache(
   async (params: TGetCharacterParams): Promise<Character | null> => {
-    try {
-      const response = await fetch(fullUrl(`/character/${params.id}`));
+    const character = await fetcher<Character>(fullUrl(`/character/${params.id}`));
 
-      if (!response.ok) {
-        throw new Error('Failed to fetch data');
-      }
+    if (!character) return null;
 
-      const character: Character = await response.json();
+    const enrichedOrigin = await enrichLocationData(character.origin);
+    const enrichedLocation = await enrichLocationData(character.location);
 
-      // Fetch origin data
-      if (character.origin.url) {
-        const originResponse = await fetch(character.origin.url);
-        if (originResponse.ok) {
-          const originData: Location = await originResponse.json();
-          character.origin = { ...character.origin, ...originData };
-        }
-      }
-
-      // Fetch location data
-      if (character.location.url) {
-        const locationResponse = await fetch(character.location.url);
-        if (locationResponse.ok) {
-          const locationData: Location = await locationResponse.json();
-          character.location = { ...character.location, ...locationData };
-        }
-      }
-
-      return character;
-    } catch (error) {
-      console.error(error);
-      return null;
-    }
+    return {
+      ...character,
+      origin: enrichedOrigin,
+      location: enrichedLocation,
+    };
   },
 );

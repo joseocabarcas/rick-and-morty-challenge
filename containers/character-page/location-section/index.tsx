@@ -14,14 +14,18 @@ export default function LocationSection({ location, title }: LocationProps) {
           <dt className="text-sm font-medium text-gray-500">Name</dt>
           <dd className="mt-1 text-sm text-gray-900">{location.name}</dd>
         </div>
-        <div className="col-span-1">
-          <dt className="text-sm font-medium text-gray-500">Type</dt>
-          <dd className="mt-1 text-sm text-gray-900">{location.type}</dd>
-        </div>
-        <div className="col-span-1">
-          <dt className="text-sm font-medium text-gray-500">Dimension</dt>
-          <dd className="mt-1 text-sm text-gray-900">{location.dimension}</dd>
-        </div>
+        {location.type && (
+          <div className="col-span-1">
+            <dt className="text-sm font-medium text-gray-500">Type</dt>
+            <dd className="mt-1 text-sm text-gray-900">{location.type}</dd>
+          </div>
+        )}
+        {location.dimension && (
+          <div className="col-span-1">
+            <dt className="text-sm font-medium text-gray-500">Dimension</dt>
+            <dd className="mt-1 text-sm text-gray-900">{location.dimension}</dd>
+          </div>
+        )}
       </dl>
     </div>
   );
