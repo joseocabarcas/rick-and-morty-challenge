@@ -29,8 +29,8 @@ export const RecentItem = ({ character }: RecentItemProps) => {
             </div>
           </div>
           <div className="mt-4">
-            <p className="text-muted-foreground text-sm">#{character.id}</p>
-            <h3 className="truncate text-lg font-semibold">{character.name}</h3>
+            <p className="text-muted-foreground text-sm text-gray-800">#{character.id}</p>
+            <h3 className="truncate text-lg font-semibold text-gray-800">{character.name}</h3>
           </div>
         </div>
       </div>
