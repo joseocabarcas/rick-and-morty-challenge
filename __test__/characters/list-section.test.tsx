@@ -1,9 +1,8 @@
-import { useHandleInfinite } from '@rick-and-morty-ch/containers/characters-page/hooks/useHandleInfinite';
-import { useStatusFilter, useTermSearch } from '@rick-and-morty-ch/stores/characters-store';
 import { useQueryGetAllCharactersInfinite } from '@rick-and-morty-ch/containers/characters-page/hooks/useQueryGetAllCharactersInfinite';
 import { ListSection } from '@rick-and-morty-ch/containers/characters-page/list-section';
-import { render, screen, waitFor } from '@testing-library/react';
+import { useIsVisible } from '@rick-and-morty-ch/hooks/useIsVisible';
 import { mockListCharacters } from '@rick-and-morty-ch/test-utils/mock-list-characters';
+import { render, screen, waitFor } from '@testing-library/react';
 
 // Mock hooks
 jest.mock('@rick-and-morty-ch/stores/characters-store', () => ({
@@ -12,8 +11,8 @@ jest.mock('@rick-and-morty-ch/stores/characters-store', () => ({
   useCharacterFiltersActions: jest.fn(() => ({ setTerm: jest.fn(), setStatus: jest.fn() })),
 }));
 
-jest.mock('@rick-and-morty-ch/containers/characters-page/hooks/useHandleInfinite', () => ({
-  useHandleInfinite: jest.fn(() => ({ container: { current: null }, visible: false })),
+jest.mock('@rick-and-morty-ch/hooks/useIsVisible', () => ({
+  useIsVisible: jest.fn(() => ({ ref: jest.fn(), isIntersecting: false })),
 }));
 
 jest.mock(
@@ -91,9 +90,9 @@ describe('ListSection', () => {
 
     const mockRef = jest.fn();
 
-    (useHandleInfinite as jest.Mock).mockReturnValue({
-      container: mockRef,
-      visible: true,
+    (useIsVisible as jest.Mock).mockReturnValue({
+      ref: mockRef,
+      isIntersecting: true,
     });
 
     render(<ListSection />);
