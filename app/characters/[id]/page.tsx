@@ -1,4 +1,4 @@
-import { CharacterSection } from '@rick-and-morty-ch/containers/character-page/character-section/character';
+import { CharacterSection } from '@rick-and-morty-ch/containers/character-page/character-section';
 import LocationSection from '@rick-and-morty-ch/containers/character-page/location-section';
 import PersonalInformationSection from '@rick-and-morty-ch/containers/character-page/personal-information-section';
 import { getCharacterById } from '@rick-and-morty-ch/services/characters/getCharacterById';
@@ -14,7 +14,7 @@ interface CharacterPageProps {
 export default async function CharacterPage({ params }: CharacterPageProps) {
   const character = await getCharacterById({ id: params.id });
 
-  if (!character) notFound();
+  if (!character) return notFound();
 
   return (
     <div className="w-full flex-shrink-0 overflow-hidden rounded-lg bg-white shadow-md sm:px-4 xl:mx-auto xl:max-w-screen-xl">

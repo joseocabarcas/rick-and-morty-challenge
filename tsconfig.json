@@ -12,6 +12,8 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "baseUrl": ".",
+    "types": ["@testing-library/jest-dom"],
     "plugins": [
       {
         "name": "next"
@@ -21,6 +23,6 @@
       "@rick-and-morty-ch/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "**/*.spec.ts", "**/*.test.ts", "jest.config.ts", "jest.setup.js"],
   "exclude": ["node_modules"]
 }
