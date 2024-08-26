@@ -5,9 +5,7 @@ import { getQueryClient } from '@rick-and-morty-ch/lib/query-client';
 import { optionsGetAllCharacters } from '@rick-and-morty-ch/services/characters/getAllCharacters';
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
 
-interface CharactersPageProps {}
-
-export default async function CharactersPage({}: CharactersPageProps) {
+export default async function CharactersPage() {
   // Prefetch first page
   const queryClient = getQueryClient();
   await queryClient.prefetchInfiniteQuery(

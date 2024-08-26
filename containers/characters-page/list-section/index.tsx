@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useHandleInfinite } from '../hooks/useHandleInfinite';
-import { useQueryGetAllCharactersInfinite } from '../hooks/useQueryGetAllCharactersInfinite';
+import { useHandleInfinite } from '@rick-and-morty-ch/containers/characters-page/hooks/useHandleInfinite';
+import { useQueryGetAllCharactersInfinite } from '@rick-and-morty-ch/containers/characters-page/hooks/useQueryGetAllCharactersInfinite';
 import { Item } from './item';
 import { CharacterSlim } from '@rick-and-morty-ch/types/characters';
 import { useStatusFilter, useTermSearch } from '@rick-and-morty-ch/stores/characters-store';

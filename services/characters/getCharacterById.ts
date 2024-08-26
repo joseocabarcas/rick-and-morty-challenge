@@ -1,7 +1,6 @@
 import { Character } from '@rick-and-morty-ch/types/character';
 import { cache } from 'react';
-
-const fullUrl = (url: string) => `${process.env.NEXT_PUBLIC_API_BASE_URL}${url}`;
+import { fullUrl } from '../http/fullUrl';
 
 type TGetCharacterParams = {
   id: string;

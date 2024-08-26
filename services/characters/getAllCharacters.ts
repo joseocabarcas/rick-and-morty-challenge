@@ -1,8 +1,7 @@
 import { ApiResponseCharacters } from '@rick-and-morty-ch/types/characters';
 import { infiniteQueryOptions, QueryFunctionContext } from '@tanstack/react-query';
 import { cache } from 'react';
-
-const fullUrl = (url: string) => `${process.env.NEXT_PUBLIC_API_BASE_URL}${url}`;
+import { fullUrl } from '../http/fullUrl';
 
 type TGetAllCharacterParams = {
   page?: number;
@@ -44,10 +43,11 @@ export const getAllCharacters = cache(
 export const optionsGetAllCharacters = (params: TGetAllCharacterParams) =>
   infiniteQueryOptions<ApiResponseCharacters>({
     queryKey: ['getAllCharacters', { ...params, page: 1 }],
-      queryFn: ({ pageParam = 1 }: QueryFunctionContext) => getAllCharacters({ ...params, page: pageParam as number }),
-      getNextPageParam: (lastPage) => {
-        const nextPage = lastPage?.info.next?.split('page=')[1];
-        return nextPage ? parseInt(nextPage, 10) : undefined;
-      },
-      initialPageParam: 1,
+    queryFn: ({ pageParam = 1 }: QueryFunctionContext) =>
+      getAllCharacters({ ...params, page: pageParam as number }),
+    getNextPageParam: (lastPage) => {
+      const nextPage = lastPage?.info.next?.split('page=')[1];
+      return nextPage ? parseInt(nextPage, 10) : undefined;
+    },
+    initialPageParam: 1,
   });
